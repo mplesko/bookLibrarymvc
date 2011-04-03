@@ -3,26 +3,34 @@ body {
 	padding: 0px;
 }
 
-#header {
+#welcomebar {
 	background: #DDDDDD;
 	width: 100%;
+}
+
+#leftBar {
+	background: yellowgreen;
+	width: 15%;
+	height: 500px;
+	float: left;
 }
 
 #toolBar {
 	background: #DDDDDD;
 	width: 100%;
 	border: 1px solid #ccc;
-	border-style: solid none solid none;
+	border-style: solid;
 	padding: 7px 12px;
 }
 
 #toolBar ul {
-	margin: 0 40 0 0;
+	margin: 0 20 0 0;
 	padding: 0 0 0 0;
 	float: left;
 	list-style: none;
-	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
 }
 
 #toolBar ul li {
@@ -31,24 +39,15 @@ body {
 
 #toolBar ul li a {
 	display: block;
-	padding: 8px 15px;
+	padding: 7px 15px;
 	text-decoration: none;
 	font-weight: bold;
 	color: #069;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
+	border-right: 1px solid black;	
 }
 
 #toolBar ul li a:hover {
 	background-color: yellowgreen;
-}
-
-}
-#leftBar {
-	background: yellowgreen;
-	width: 15%;
-	height: 500px;
-	float: left;
 }
 
 #content {

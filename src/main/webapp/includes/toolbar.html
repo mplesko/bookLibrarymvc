@@ -2,24 +2,31 @@
 	<ul>
 		<c:choose>
 			<c:when test="false">
-				<li><a href="login"><fmt:message key="login" /> </a></li>
+				<li><a href="login"><fmt:message key="login" /> </a>
+				</li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="logout"><fmt:message key="logout" /> </a></li>
+				<li><a href="logout"><fmt:message key="logout" /> </a>
+				</li>
 			</c:otherwise>
 		</c:choose>
 	</ul>
+	<c:if test="false">
+		<ul>
+			<li><a href="library"><fmt:message key="myLibrary" /> </a>
+			</li>
+		</ul>
+	</c:if>
 	<ul>
-		<c:if test="true">
-			<li><a href="library"><fmt:message key="myLibrary" /> </a></li>
-		</c:if>
+		<li><a href="authorlist"><fmt:message key="authors" /> </a>
+		</li>
+		<li><a href="booklist"><fmt:message key="books" /> </a>
+		</li>
 	</ul>
 	<ul>
-		<li><a href="authorlist"><fmt:message key="authors" /> </a></li>
-		<li><a href="booklist"><fmt:message key="books" /> </a></li>
-	</ul>
-	<ul>
-		<li><a href="addauthors"><fmt:message key="addAuthors" /> </a></li>
-		<li><a href="addbooks"><fmt:message key="addBooks" /> </a></li>
+		<li><a href="addauthors"><fmt:message key="addAuthors" /> </a>
+		</li>
+		<li><a href="addbooks"><fmt:message key="addBooks" /> </a>
+		</li>
 	</ul>
 </div>
