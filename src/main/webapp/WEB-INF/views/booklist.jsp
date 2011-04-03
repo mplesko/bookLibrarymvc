@@ -12,6 +12,6 @@
 	<%@ include file="/includes/welcomebar.html" %>
 	<%@ include file="/includes/toolbar.html" %>
 	<%@ include file="/includes/leftbar.html" %>
-	<div id="content">default booklibrarymvc contentx</div>
+	<div id="content">default booklist content</div>
 </body>
 </html>
