@@ -1,0 +1,1 @@
+http://www.roseindia.net/tutorial/spring/spring3/web/spring-3-mvc-and-hibernate3-example-part1.html

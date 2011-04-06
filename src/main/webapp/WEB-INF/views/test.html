@@ -1,13 +1,7 @@
-body {
-	margin: 0px;
-	padding: 0px;
-}
-
-#welcomebar {
-	background: #DDDDDD;
-	width: 100%;
-}
-
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css"> 
 #leftBar {
 	background: yellowgreen;
 	width: 15%;
@@ -60,53 +54,30 @@ body {
 	height: 500px;
 	float: right;
 }
+</style>
+<title>testing float</title>
 
-.error {
-	font-style: italic;
-	background: #FFC;
-	border-color: #F00;
-	color: red;
-}
+</head>
+<body>
 
-.toolBarGroup {
-	color: white;
-}
+<div id="toolBar">
+<table><tr><td>
+		<ul>
+			<li><a href="logout">logout</a></li>
+		</ul>
+		<ul>
+			<li><a href="authorlist">authors</a></li>
+			<li><a href="booklist">books</a></li>
+		</ul>
+		<ul>
+			<li><a href="addauthors">addAuthors</a></li>
+			<li><a href="addbooks">addBooks</a></li>
+		</ul>
+</td></tr></table>
+</div>
 
-xbody {
-	background-color: #e6ffff;
-	border-style: ridge;
-	border-width: medium;
-}
+<div id="leftBar">leftbar</div>
 
-h1 {
-	color: blue;
-}
-
-h2 {
-	color: green;
-	font-family: verdana;
-}
-
-hr {
-	color: maroon;
-}
-
-.dataTableHeader {
-	color: black;
-	background-color: #aaaaaa;
-	font-weight: bold;
-}
-
-.dataTable {
-	border: thin solid black;
-}
-
-.dataTableOddRow {
-	color: black;
-	background-color: #eeeeee;
-}
-
-.dataTableEvenRow {
-	color: black;
-	background-color: lightyellow;
-}
+<div id="content">default booklibrarymvc contentx</div>
+</body>
+</html>

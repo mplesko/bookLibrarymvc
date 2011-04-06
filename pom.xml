@@ -124,7 +124,13 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
-        
+		
+		<dependency>  
+            <groupId>javax.persistence</groupId>  
+            <artifactId>persistence-api</artifactId>  
+            <version>1.0</version>  
+        </dependency>  
+             
 	</dependencies>
 	<repositories>
 		<!-- For testing against latest Spring snapshots -->
