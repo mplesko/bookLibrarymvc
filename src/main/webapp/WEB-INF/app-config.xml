@@ -20,6 +20,10 @@
 	<!-- Weaves in transactional advice around @Transactional methods -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<!-- Manages the BookLibrary app -->
+	<bean id="bookLibraryService" class="com.logansrings.booklibrary.service.BookLibraryServiceImpl">
+	</bean>
+
 	<!-- Manages the db access for Authors -->
 	<bean id="authorDao" class="com.logansrings.booklibrary.dao.AuthorDaoImpl">
 		<!-- <constructor-arg ref="sessionFactory" /> -->

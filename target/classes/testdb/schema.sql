@@ -1,3 +1,5 @@
 drop table AUTHOR if exists;
-
-CREATE TABLE AUTHOR (id BIGINT(13), version INT, firstName CHAR(80), lastName CHAR(80));
+drop table BOOK if exists;
+ 
+CREATE TABLE AUTHOR (ID integer identity primary key, VERSION integer, FIRST_NAME CHAR(80) not null, LAST_NAME CHAR(80) not null, unique(LAST_NAME, FIRST_NAME));
+CREATE TABLE BOOK   (ID integer identity primary key, VERSION integer, AUTHOR_ID integer, TITLE CHAR(80) not null, unique(AUTHOR_ID, TITLE));
