@@ -3,11 +3,13 @@ package com.logansrings.booklibrary.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.logansrings.booklibrary.dao.AuthorDao;
 import com.logansrings.booklibrary.model.Author;
 import com.logansrings.booklibrary.model.Book;
 
+@Service
 public class BookLibraryServiceImpl implements BookLibraryService {
 
 	@Autowired

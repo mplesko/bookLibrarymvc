@@ -70,8 +70,8 @@ public class Author {
 	public boolean isValid() {return valid;}
 	public boolean isNotValid() {return ! isValid();}
 
-	String getFirstName() {return firstName;}
-	String getLastName() {return lastName;}
+	public String getFirstName() {return firstName;}
+	public String getLastName() {return lastName;}
 
 	public void setId(Long id) {this.id = id;}
 	public Long getId() {return id;}
