@@ -79,15 +79,16 @@ public class Book {
 		return book;
 	}
 
-	String getTitle() {return title;}
+	public String getTitle() {return title;}
 
 	public Long getId() {return id;}
 	public void setId(Long id) {this.id = id;}
 
 //	Long getAuthorId() {return authorId;}
 
-	String getAuthorFirstName() {return author.getFirstName();}
-	String getAuthorLastName() {return author.getLastName();}
+	public String getAuthorFirstName() {return author.getFirstName();}
+	public String getAuthorLastName() {return author.getLastName();}
+	public String getAuthorName() {return author.getAuthorName();}
 
 	public boolean isValid() {return valid;}
 	public boolean isNotValid() {return ! isValid();}

@@ -73,6 +73,14 @@ public class Author {
 	public String getFirstName() {return firstName;}
 	public String getLastName() {return lastName;}
 
+	public String getAuthorName() {
+		return firstName + " " + lastName;
+	}
+
+	public String getAuthorLastNameFirstName() {
+		return lastName + ", " + firstName;
+	}
+
 	public void setId(Long id) {this.id = id;}
 	public Long getId() {return id;}
 	
