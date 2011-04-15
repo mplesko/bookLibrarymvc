@@ -19,7 +19,8 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Transactional(readOnly=true)
 	@SuppressWarnings("unchecked")
 	public Collection<Author> getAuthors() {
-		return (List<Author>) sessionFactory.getCurrentSession().createCriteria(Author.class).list();
+		List<Author> list = sessionFactory.getCurrentSession().createCriteria(Author.class).list();
+		return list;
 	}
 
 }

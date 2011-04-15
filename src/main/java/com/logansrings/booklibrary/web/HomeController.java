@@ -1,17 +1,13 @@
 package com.logansrings.booklibrary.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.logansrings.booklibrary.model.Book;
 import com.logansrings.booklibrary.service.BookLibraryService;
 
 /**
@@ -23,15 +19,23 @@ public class HomeController {
 	@Autowired
 	private BookLibraryService bookLibraryService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+//	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home() {
-		logger.info("Welcome home!");
+//		logger.info("Welcome home!");
 		return "home";
+	}
+	
+	/**
+	 * Simply redirects to the login view by returning its name.
+	 */
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login() {
+		return "login";
 	}
 	
 	/**
@@ -50,7 +54,7 @@ public class HomeController {
 	 */
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {
-		List<Book> list = new ArrayList<Book>();
+//		List<Book> list = new ArrayList<Book>();
 //		list.add(Book.getTestBook());
 //		model.addAttribute("books", list);
 		model.addAttribute("books", bookLibraryService.getBooks());

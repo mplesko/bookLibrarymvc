@@ -19,8 +19,13 @@ public class BookDaoImpl implements BookDao {
 	@Transactional(readOnly=true)
 	@SuppressWarnings("unchecked")
 	public Collection<Book> getBooks() {
-		List list = sessionFactory.getCurrentSession().createCriteria(Book.class).list();
-		return (List<Book>) sessionFactory.getCurrentSession().createCriteria(Book.class).list();
+		try {
+			List<Book> list = sessionFactory.getCurrentSession().createCriteria(Book.class).list();
+			return list;
+		} catch (Throwable t) {
+			System.out.println("junk");
+			return null;
+		}
 	}
 
 }

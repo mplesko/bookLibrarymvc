@@ -1,12 +1,13 @@
 <div id="toolBar">
 	<table><tr><td>
 		<ul>
+			<li><a href="login"><fmt:message key="login" /> </a></li>
 			<c:choose>
 				<c:when test="false">
 					<li><a href="login"><fmt:message key="login" /> </a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="logout"><fmt:message key="logout" /> </a></li>
+					<li><a href="<c:url value="/j_spring_security_logout"/>"><fmt:message key="logout" /></a></li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
