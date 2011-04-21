@@ -14,7 +14,7 @@
 		<org.aspectj-version>1.6.9</org.aspectj-version>
 		<org.slf4j-version>1.5.10</org.slf4j-version>
 	</properties>
-	<dependencies>
+	<dependencies>	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -153,7 +153,8 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.1-Final</version>
+			<version>3.4.0.GA</version>
+			
 		</dependency>
 	
 		<dependency>

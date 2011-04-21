@@ -44,7 +44,7 @@
 		</property>
 	</bean>
 
-	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+	<!-- Creates an in-memory database populated with test data for fast testing -->
 	<jdbc:embedded-database id="dataSource">
 		<jdbc:script location="classpath:testdb/schema.sql"/>
 		<jdbc:script location="classpath:testdb/test-data.sql"/>

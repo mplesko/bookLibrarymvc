@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.logansrings.booklibrary.service.BookLibraryService;
 
 /**
@@ -20,24 +18,7 @@ public class HomeController {
 	private BookLibraryService bookLibraryService;
 	
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String home() {
-//		logger.info("Welcome home!");
-		return "home";
-	}
-	
-	/**
-	 * Simply redirects to the login view by returning its name.
-	 */
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
-	
+		
 	/**
 	 * <p>Provide a model with a list of all authors.</p>
 	 * @param model the "implicit" model created by Spring MVC
