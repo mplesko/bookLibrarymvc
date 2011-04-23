@@ -12,7 +12,7 @@
 	<%@ include file="/includes/toolbar.html"%>
 	<%@ include file="/includes/leftbar.html"%>
 	<div id="content">
-		<h1>access denied</h1>
+		<h1>timeout</h1>
 
 	</div>
 </body>

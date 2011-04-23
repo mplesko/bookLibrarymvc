@@ -33,6 +33,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<!-- Forwards requests to the "/" resource to the "welcome" view -->
 	<mvc:view-controller path="/" view-name="home" />
+	<mvc:view-controller path="/home" view-name="home" />
 	<mvc:view-controller path="/login" view-name="login" />
 	<mvc:view-controller path="/library" view-name="library" />
 	<mvc:view-controller path="/timeout" view-name="timeout" />
