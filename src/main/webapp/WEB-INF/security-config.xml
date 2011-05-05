@@ -24,7 +24,7 @@
         
         <form-login login-page="/login" 
             authentication-failure-url="/login?login_error=1" 
-            default-target-url="/library" />
+            default-target-url="/loggedin" />
         <!--<logout logout-success-url="loggedout.jsp" delete-cookies="JSESSIONID"/>-->
         <logout invalidate-session="true" logout-success-url="/home" />
         <remember-me />

@@ -2,11 +2,16 @@
 <div id="welcomebar">
 	<table>
 		<tr>
-			<td><img src="<c:url value="/resources/deckView.jpg"/>"
-				alt="Deck View" height="100" /></td>
+			<td><img src="<c:url value="/resources/deckView.jpg"/>"	alt="Deck View" height="100" /></td>
 			<td>
 				<h1>
-					<fmt:message key="welcome" />
+					<sec:authorize access="! isAuthenticated()">
+						<fmt:message key="welcome"/>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<fmt:message key="welcome1" /> 
+						<sec:authentication property="principal.username"/>!
+					</sec:authorize>
 				</h1>
 				<h1>
 					<fmt:message key="welcome2" />

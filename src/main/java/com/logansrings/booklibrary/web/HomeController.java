@@ -2,10 +2,15 @@ package com.logansrings.booklibrary.web;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.logansrings.booklibrary.service.BookLibraryService;
 
 /**
@@ -41,6 +46,20 @@ public class HomeController {
 		model.addAttribute("books", bookLibraryService.getBooks());
 		return "booklist";
 	}
+	
+	/**
+	 * <p>Provide a model with a list of all books for principal.</p>
+	 * @param model the "implicit" model created by Spring MVC
+	 */
+	@Secured("ROLE_USER")
+	@RequestMapping("/loggedin")
+	public String loggedIn(Model model) {
+		final String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
+		return "library";
+	}
+	
 	
 }
 
