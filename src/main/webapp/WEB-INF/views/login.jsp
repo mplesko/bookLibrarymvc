@@ -38,7 +38,7 @@
 				<tr>
 					<td colspan="2" align="right"><input type="button" value="<fmt:message key="register" />" 
 					    onclick="location.href="registration"/></td>
-					<td><a href="registration"><fmt:message key="register" /> </a></td>
+					<td><a href="register"><fmt:message key="register" /> </a></td>
 				</tr>
 			</table>
 			

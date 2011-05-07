@@ -65,10 +65,10 @@ public class HomeController {
 	 * @param model the "implicit" model created by Spring MVC
 	 * @return 
 	 */
-	@RequestMapping("/registration")
-	public String registration(Model model) {
-		return "register";
-	}
+//	@RequestMapping("/registration")
+//	public String registration(Model model) {
+//		return "register";
+//	}
 		
 }
 

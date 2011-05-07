@@ -25,10 +25,12 @@ public class RegisterController {
 	/**
 	 * <p>Register the user.</p>
 	 * @param model the "implicit" model created by Spring MVC
+	 * @return 
 	 */
 	@RequestMapping(method=RequestMethod.GET)
-	public void form(Model model) {
+	public String form(Model model) {
 		model.addAttribute("user", new User());
+		return "register";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)                         
