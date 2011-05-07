@@ -3,7 +3,7 @@ package com.logansrings.booklibrary.model;
 import javax.persistence.*;
 
 @Entity
-@Table( name = "BOOK" )
+@Table( name = "BOOKS" )
 public class Book {
 	@Id
 	@Column(name = "ID")

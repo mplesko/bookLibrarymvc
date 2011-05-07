@@ -31,13 +31,14 @@
 	</beans:bean>
 	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	<!-- Forwards requests to the "/" resource to the "welcome" view -->
+	<!-- Forwards requests to the "/" resource to the "home" view -->
 	<mvc:view-controller path="/" view-name="home" />
 	<mvc:view-controller path="/home" view-name="home" />
 	<mvc:view-controller path="/login" view-name="login" />
 	<mvc:view-controller path="/library" view-name="library" />
 	<mvc:view-controller path="/timeout" view-name="timeout" />
 	<mvc:view-controller path="/accessDenied" view-name="accessDenied" />
+	<mvc:view-controller path="/registration" view-name="registration" />
 	 
 	<!-- Imports user-defined @Controller beans that process client requests 
 	<beans:import resource="controllers.xml" />-->

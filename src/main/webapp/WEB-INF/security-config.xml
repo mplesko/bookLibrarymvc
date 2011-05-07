@@ -16,10 +16,7 @@
 		<intercept-url pattern="/resources/**" filters="none" />
 		<intercept-url pattern="/WEB-INF/views/library.jsp" access="isAuthenticated()" />
 		<intercept-url pattern="/library*" access="isAuthenticated()" />
-        <!--
-             Allow all other requests. In a real application you should
-             adopt a whitelisting approach where access is not allowed by default
-          -->
+        <!-- Allow all other requests. -->
         <intercept-url pattern="/**" access="permitAll" />
         
         <form-login login-page="/login" 

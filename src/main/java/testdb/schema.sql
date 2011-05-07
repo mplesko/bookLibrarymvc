@@ -1,5 +1,8 @@
 drop table AUTHORS if exists;
 drop table BOOKS if exists;
+drop table USERBOOKS if exists;
+drop table users if exists;
+drop table authorities if exists;
   
 CREATE TABLE AUTHORS (
     ID integer identity primary key, 
@@ -25,7 +28,7 @@ CREATE TABLE users (
       password varchar(50) not null,
       enabled boolean not null);
 
-  create table AUTHORITIES (
+  create table authorities (
       username varchar(50) not null,
       authority varchar(50) not null,
       constraint fk_authorities_users foreign key(username) references users(username));

@@ -60,6 +60,15 @@ public class HomeController {
 		return "library";
 	}
 	
-	
+	/**
+	 * <p>Registration redirects to register.</p>
+	 * @param model the "implicit" model created by Spring MVC
+	 * @return 
+	 */
+	@RequestMapping("/registration")
+	public String registration(Model model) {
+		return "register";
+	}
+		
 }
 
