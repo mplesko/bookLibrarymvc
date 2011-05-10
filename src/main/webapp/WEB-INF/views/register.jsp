@@ -13,7 +13,7 @@
 	<%@ include file="/includes/toolbar.html"%>
 	<%@ include file="/includes/leftbar.html"%>
 	<div id="content">
-		<form:form modelAttribute="user">
+		<form:form modelAttribute="registerBean">
 			<table>
 				<tr>
 					<td><fmt:message key="email" /></td>

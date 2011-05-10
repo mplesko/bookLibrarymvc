@@ -13,14 +13,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.logansrings.booklibrary.model.User;
-
 /**
- * Handles registration requests.
+ * Handles registration and log in requests.
  */
 @Controller
 @RequestMapping("/register")
-public class RegisterController {
+public class LogInController {
 
 	/**
 	 * <p>Register the user.</p>
@@ -29,12 +27,12 @@ public class RegisterController {
 	 */
 	@RequestMapping(method=RequestMethod.GET)
 	public String form(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("registerBean", new RegisterBean());
 		return "register";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)                         
-	public String form(@ModelAttribute("user") User user, BindingResult result, Model model) {
+	public String form(@ModelAttribute("user") RegisterBean registerBean, BindingResult result, Model model) {
 		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
 		return "library";
 	}
@@ -46,4 +44,3 @@ public class RegisterController {
 	
 	private void verifyBinding(BindingResult result) { }
 }
-

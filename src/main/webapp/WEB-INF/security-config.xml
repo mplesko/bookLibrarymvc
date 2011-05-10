@@ -39,13 +39,22 @@
 
     </http>
 
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="plaintext"/>
+            <user-service>
+                <user name="mark" password="mark" authorities="ROLE_USER" />
+                <user name="logan" password="logan" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
     <!--
     Usernames/Passwords are
         rod/koala
         dianne/emu
         scott/wombat
         peter/opal
-    -->
+
     <authentication-manager>
         <authentication-provider>
             <password-encoder hash="md5"/>
@@ -57,5 +66,5 @@
             </user-service>
         </authentication-provider>
     </authentication-manager>
-
+    -->
 </beans:beans>
