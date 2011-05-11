@@ -28,6 +28,10 @@
 					<td><form:password path="password" id="passwordfield" showPassword="true"/></td>
 				</tr>
 				<tr>
+					<td><fmt:message key="passwordConfirm" /></td>
+					<td><form:password path="passwordConfirm" id="passwordconfirmfield" showPassword="true"/></td>
+				</tr>
+				<tr>
 					<td colspan="2" align="right"><input type="submit" value="<fmt:message key="register" />"  /></td>
 				</tr>
 			</table>			

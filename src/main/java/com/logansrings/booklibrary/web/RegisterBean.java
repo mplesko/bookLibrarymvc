@@ -1,30 +1,27 @@
 package com.logansrings.booklibrary.web;
 
-//import org.springmodules.validation.bean.conf.loader.annotation.handler.Email;
-//import org.springmodules.validation.bean.conf.loader.annotation.handler.Expression;
-//import org.springmodules.validation.bean.conf.loader.annotation.handler.MaxLength;
-//import org.springmodules.validation.bean.conf.loader.annotation.handler.NotBlank;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class RegisterBean {
-	private String username = "";
-	private String password = "";
-	private String passwordConfirmation;
-	private String email = "";
 	
-//	@NotBlank
-//	@MaxLength(20)
-//	private String username = "";
-//	
-//	@NotBlank
-//	@MaxLength(20)
-//	@Expression(value = "password equals passwordConfirmation", errorCode = "password.not.match")
-//	private String password = "";
-//	private String passwordConfirmation;
-//	
-//	@NotBlank
-//	@MaxLength(80)
-//	@Email
-//	private String email = "";
+	@NotEmpty
+	@Length(max=20)
+	private String username = "";
+	
+	@NotEmpty
+	@Length(max=20)
+	private String password = "";
+	
+	@NotEmpty
+	@Length(max=20)
+	private String passwordConfirm = "";
+	
+	@NotEmpty
+	@Length(max=50)
+	@Email
+	private String email = "";
 	
 	public String getUsername() {
 		return username;
@@ -44,11 +41,15 @@ public class RegisterBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPasswordConfirmation() {
-		return passwordConfirmation;
+	public String getPasswordConfirm() {
+		return passwordConfirm;
 	}
-	public void setPasswordConfirmation(String passwordConfirmation) {
-		this.passwordConfirmation = passwordConfirmation;
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+	
+	public boolean validPasswords() {
+		return password.equals(passwordConfirm);
 	}
 
 }
