@@ -7,5 +7,6 @@ public interface BookLibraryService {
 
 	Collection<Book> getBooks();
 	Collection<Author> getAuthors();
+	User register(String username, String password, String email);
 	
 }

@@ -33,6 +33,10 @@
 	<bean id="bookDao" class="com.logansrings.booklibrary.dao.BookDaoImpl">
 	</bean>
 
+	<!-- Manages the db access for Users -->
+	<bean id="userDao" class="com.logansrings.booklibrary.dao.UserDaoImpl">
+	</bean>
+
 	<!-- A Hibernate SessionFactory for mapping from object to relation tables -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>

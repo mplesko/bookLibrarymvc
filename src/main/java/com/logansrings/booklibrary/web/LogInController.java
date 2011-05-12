@@ -4,6 +4,7 @@ package com.logansrings.booklibrary.web;
 //import org.slf4j.LoggerFactory;
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.logansrings.booklibrary.model.User;
+import com.logansrings.booklibrary.service.BookLibraryService;
+
 /**
  * Handles registration and log in requests.
  */
 @Controller
 public class LogInController {
+
+	@Autowired
+	private BookLibraryService bookLibraryService;
 
 	/**
 	 * <p>Register the user.</p>
@@ -34,6 +41,10 @@ public class LogInController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)                         
 	public String form(@ModelAttribute("user") RegisterBean registerBean, BindingResult result, Model model) {
+		User user = bookLibraryService.register(
+				registerBean.getUsername(), 
+				registerBean.getPassword(),
+				registerBean.getEmail());
 		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
 		return "library";
 	}
