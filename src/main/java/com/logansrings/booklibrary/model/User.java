@@ -16,9 +16,9 @@ public class User {
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	private Long id;
-	@Version
-    @Column(name="version")
-    private Integer version;
+//	@Version
+//    @Column(name="version")
+//    private Integer version;
 	
 	@Column(name = "username")
 	private String username = "";
@@ -30,8 +30,8 @@ public class User {
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinTable(name = "userbook",
-			joinColumns = {@JoinColumn(name = "userName")},
-			inverseJoinColumns = {@JoinColumn(name = "bookId")})
+			joinColumns = {@JoinColumn(name = "user_id")},
+			inverseJoinColumns = {@JoinColumn(name = "book_id")})
 	private Set<Book> books = new HashSet<Book>();
 	public void setBooks(Set<Book> books) {this.books = books;}
 	public Set<Book> getBooks() {return books;}
@@ -137,8 +137,8 @@ public class User {
 	public String toString() {
 		StringBuilder returnValue = new StringBuilder();
 		returnValue.append(
-				String.format("[%s] id:%d userName:%s valid:%s context:%s version:%d bookCount:%d",
-				"User", id, username, valid, context, version, books.size()));
+				String.format("[%s] id:%d userName:%s valid:%s context:%s bookCount:%d",
+				"User", id, username, valid, context, books.size()));
 		for (Book book : this.books) {
 			returnValue.append("\n");
 			returnValue.append(book.toString());
@@ -233,5 +233,11 @@ public class User {
 //	public void setEmail(String email) {
 //		this.email = email;
 //	}
+	public static User getInvalidUser(String context) {
+		User user = new User();
+		user.valid = false;
+		user.context = context;
+		return user;
+	}
 
 }

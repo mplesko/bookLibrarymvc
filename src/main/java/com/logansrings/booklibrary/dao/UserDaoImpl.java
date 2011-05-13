@@ -20,18 +20,19 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Transactional()
-	@Override
+	@Transactional(readOnly=true)
 	public User register(String username, String password, String email) {
-		if (findByUsername(username) == null) {
+		User user = findByUsername(username);
+		if (user == null) {
 			// ok, expected
 		} else {
 			// problem - add error and return 
 		}
-		return null;
+		return user;
 	}
 	
 
+	@Transactional(readOnly=true)
 	public User findByUsername(String username) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from User where username = ?");

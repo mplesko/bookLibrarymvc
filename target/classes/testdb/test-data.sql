@@ -8,3 +8,5 @@ insert into BOOKS (VERSION, AUTHOR_ID, TITLE) values (0, 0, 'Becoming a Technica
 insert into BOOKS (VERSION, AUTHOR_ID, TITLE) values (0, 1, 'Peopleware');
 insert into BOOKS (VERSION, AUTHOR_ID, TITLE) values (0, 1, 'Waltzing With Bears');
 insert into BOOKS (VERSION, AUTHOR_ID, TITLE) values (0, 2, 'Clean Code');
+
+insert into users (username, password, enabled) values ('logan', 'logan', true)

@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Book {
 	@Id
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 	@Version
 	@Column(name="VERSION")
 	private Integer version;
@@ -60,7 +60,7 @@ public class Book {
 
 	public static Book getTestBook() {
 		Book book = new Book();
-		book.id = 1L;
+		book.id = 1;
 		book.title = "bookTitle";
 		book.author = Author.getTestAuthor();		
 		book.valid = true;
@@ -81,8 +81,8 @@ public class Book {
 
 	public String getTitle() {return title;}
 
-	public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	public Integer getId() {return id;}
+	public void setId(Integer id) {this.id = id;}
 
 //	Long getAuthorId() {return authorId;}
 

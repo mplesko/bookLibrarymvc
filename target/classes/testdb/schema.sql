@@ -19,17 +19,18 @@ CREATE TABLE BOOKS (
     unique(AUTHOR_ID, TITLE));
 
 CREATE TABLE USERBOOKS (
-    USERNAME VARCHAR(50) not null primary key,
+    USER_ID integer not null,
     BOOK_ID integer not null, 
-    unique(USERNAME, BOOK_ID));
+    unique(USER_ID, BOOK_ID));
 
 CREATE TABLE users (
-      username varchar(50) not null primary key,
-      password varchar(50) not null,
-      enabled boolean not null);
+	id integer identity primary key,
+    username varchar(50) not null,
+    password varchar(50) not null,
+    enabled boolean not null);
 
   create table authorities (
-      username varchar(50) not null,
-      authority varchar(50) not null,
-      constraint fk_authorities_users foreign key(username) references users(username));
-      create unique index ix_auth_username on authorities (username,authority);
+    user_id integer not null,
+    authority varchar(50) not null,
+    constraint fk_authorities_users foreign key(user_id) references users(id));
+    create unique index ix_auth_username on authorities (user_id, authority);

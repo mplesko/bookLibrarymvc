@@ -44,6 +44,7 @@
 			<list>
 				<value>com.logansrings.booklibrary.model.Author</value>
 				<value>com.logansrings.booklibrary.model.Book</value>
+				<value>com.logansrings.booklibrary.model.User</value>
 			</list>
 		</property>
 	</bean>
@@ -61,4 +62,12 @@
 		
 	<!-- Translates Hibernate exceptions to Spring Data Access Exceptions -->
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	<!--
+	<bean id="errorCodeConverter"class="org.springmodules.validation.bean.converter.KeepAsIsErrorCodeConverter"/> 
+	
+	<bean id="validator" class="org.springmodules.validation.bean.BeanValidator"
+		property name="configurationLoader" ref="configurationLoader"
+		property name="errorCodeConverter" ref="errorCodeConverter" />
+	-->
 </beans>

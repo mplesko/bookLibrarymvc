@@ -31,6 +31,13 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	}
 
 	public User register(String username, String password, String email) {
+		User user = userDao.findByUsername(username);
+		if (user == null) {
+			// ok, expected
+		} else {
+			User invalidUser = User.getInvalidUser("duplicate username");
+			
+		}
 		return userDao.register(username, password, email);
 	}
 

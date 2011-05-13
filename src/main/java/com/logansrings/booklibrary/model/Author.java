@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Author {
 	@Id
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 	@Version
     @Column(name="VERSION")
     private Integer version;
@@ -49,7 +49,7 @@ public class Author {
 
 	public static Author getTestAuthor() {
 		Author author = new Author();
-		author.id = 1L;
+		author.id = 1;
 		author.firstName = "authorFirstName";
 		author.lastName = "authorLastName";
 		author.valid = true;
@@ -81,8 +81,8 @@ public class Author {
 		return lastName + ", " + firstName;
 	}
 
-	public void setId(Long id) {this.id = id;}
-	public Long getId() {return id;}
+	public void setId(Integer id) {this.id = id;}
+	public Integer getId() {return id;}
 	
     public Integer getVersion() {return version;}	
     public void setVersion(Integer version) {this.version = version;}	
