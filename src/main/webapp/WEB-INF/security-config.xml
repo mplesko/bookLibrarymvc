@@ -39,7 +39,7 @@
 
     </http>
 
-    <authentication-manager>
+    <authentication-manager alias="authenticationManager">
         <authentication-provider>
             <password-encoder hash="plaintext"/>
             <user-service>
