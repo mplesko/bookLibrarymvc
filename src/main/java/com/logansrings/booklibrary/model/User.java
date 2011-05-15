@@ -29,7 +29,7 @@ public class User {
 	private String email = "";
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
-	@JoinTable(name = "userbook",
+	@JoinTable(name = "USERBOOKS",
 			joinColumns = {@JoinColumn(name = "user_id")},
 			inverseJoinColumns = {@JoinColumn(name = "book_id")})
 	private Set<Book> books = new HashSet<Book>();
@@ -52,6 +52,13 @@ public class User {
 //	}
 
 	public User() {}
+	
+	public User(String username, String password, String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
 
 //	private User(String inUserName) {
 //		this.userName = inUserName;

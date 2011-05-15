@@ -21,13 +21,14 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 
 	@Transactional(readOnly=true)
-	public User register(String username, String password, String email) {
-		User user = findByUsername(username);
-		if (user == null) {
-			// ok, expected
-		} else {
-			// problem - add error and return 
+	public User save(String username, String password, String email) {
+		String encryptedPassword = Encrypting.encrypt(password);
+		if (encryptedPassword == null) {
+			return User.getInvalidUser("unable to encrypt password");
 		}
+
+		User user = new User(username, encryptedPassword, email);
+		sessionFactory.getCurrentSession().save(user);
 		return user;
 	}
 	
