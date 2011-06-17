@@ -29,6 +29,8 @@ public class UserDaoImpl implements UserDao {
 
 		User user = new User(username, encryptedPassword, email);
 		sessionFactory.getCurrentSession().save(user);
+		
+		
 
 		return user;
 	}

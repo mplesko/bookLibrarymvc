@@ -27,11 +27,12 @@ CREATE TABLE users (
 	id integer identity primary key,
     username varchar(50) not null,
     password varchar(50) not null,
-    enabled boolean not null);
+    enabled boolean not null,
+    unique (username));
 
 create table authorities (
-    user_id integer not null,
+    username varchar(50) not null,
     authority varchar(50) not null,
-    constraint fk_authorities_users foreign key(user_id) references users(id));
-    create unique index ix_auth_username on authorities (user_id, authority);
+    constraint fk_authorities_users foreign key(username) references users(username));
+    create unique index ix_auth_username on authorities (username, authority);
     

@@ -37,6 +37,12 @@
 	<bean id="userDao" class="com.logansrings.booklibrary.dao.UserDaoImpl">
 	</bean>
 
+	<!-- Creates an in-memory database populated with test data for fast testing -->
+	<jdbc:embedded-database id="dataSource">
+		<jdbc:script location="classpath:testdb/schema.sql"/>
+		<jdbc:script location="classpath:testdb/test-data.sql"/>
+	</jdbc:embedded-database>
+	 
 	<!-- A Hibernate SessionFactory for mapping from object to relation tables -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -49,12 +55,6 @@
 		</property>
 	</bean>
 
-	<!-- Creates an in-memory database populated with test data for fast testing -->
-	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:testdb/schema.sql"/>
-		<jdbc:script location="classpath:testdb/test-data.sql"/>
-	</jdbc:embedded-database>
-	 
 	<!-- Drives transactions using Hibernate APIs when requested -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
