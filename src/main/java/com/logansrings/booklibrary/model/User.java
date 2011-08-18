@@ -30,8 +30,8 @@ public class User {
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinTable(name = "USERBOOKS",
-			joinColumns = {@JoinColumn(name = "user_id")},
-			inverseJoinColumns = {@JoinColumn(name = "book_id")})
+			joinColumns = {@JoinColumn(name = "USER_ID")},
+			inverseJoinColumns = {@JoinColumn(name = "BOOK_ID")})
 	private Set<Book> books = new HashSet<Book>();
 	public void setBooks(Set<Book> books) {this.books = books;}
 	public Set<Book> getBooks() {return books;}
