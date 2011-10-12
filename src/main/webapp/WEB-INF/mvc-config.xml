@@ -50,7 +50,6 @@
 	<mvc:view-controller path="/library" view-name="library" />
 	<mvc:view-controller path="/timeout" view-name="timeout" />
 	<mvc:view-controller path="/accessDenied" view-name="accessDenied" />
-	<mvc:view-controller path="/registration" view-name="registration" />
 	 
 	<!-- Imports user-defined @Controller beans that process client requests 
 	<beans:import resource="controllers.xml" />-->

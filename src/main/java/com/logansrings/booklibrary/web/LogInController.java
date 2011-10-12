@@ -36,53 +36,22 @@ public class LogInController {
 	@Autowired
 	private BookLibraryService bookLibraryService;
 
-//	@Autowired 
+	//	@Autowired 
 	@Resource
 	private AuthenticationManager authenticationManager;
 
+	
 	/**
-	 * <p>Register the user.</p>
-	 * @param model the "implicit" model created by Spring MVC
-	 * @return 
+	 * Handle registration request
+	 * @param request
+	 * @param model
+	 * @return
 	 */
-	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String register(Model model) {
-		model.addAttribute("registerBean", new RegisterBean());
-		return "register";
-	}
-
-	@RequestMapping(value="/register", method=RequestMethod.POST)                         
-	public String register(@ModelAttribute("user") RegisterBean registerBean, BindingResult result, HttpServletRequest request, Model model) {
-		User user = bookLibraryService.register(
-				registerBean.getUsername(), 
-				registerBean.getPassword(),
-				registerBean.getEmail());
-		
-		if (user.isNotValid()) {
-			model.addAttribute("registerBean", registerBean);
-			return "register";
-		}
-
-		UsernamePasswordAuthenticationToken token = 
-			new UsernamePasswordAuthenticationToken(registerBean.getUsername(), 
-					registerBean.getPassword());
-
-		// generate session if one doesn't exist
-		request.getSession();
-		token.setDetails(new WebAuthenticationDetails(request));
-		Authentication authentication = authenticationManager.authenticate(token);
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-
-		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
+//	@RequestMapping(value="/register", method=RequestMethod.POST)                         
+	@RequestMapping(value="/register")                         
+	public String register(HttpServletRequest request, Model model) {
 		return "library";
 	}
-
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields(new String[] {"email", "username", "password", "passwordConfirm"});
-	}
-
-	private void verifyBinding(BindingResult result) { }
 
 	/**
 	 * <p>Provide a model with a list of all books for principal.</p>
@@ -96,6 +65,4 @@ public class LogInController {
 		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
 		return "library";
 	}
-
-
 }
