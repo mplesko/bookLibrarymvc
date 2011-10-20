@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logansrings.booklibrary.model.User;
 import com.logansrings.booklibrary.service.BookLibraryService;
@@ -49,7 +50,17 @@ public class LogInController {
 	 */
 //	@RequestMapping(value="/register", method=RequestMethod.POST)                         
 	@RequestMapping(value="/register")                         
-	public String register(HttpServletRequest request, Model model) {
+	public String register(
+			@RequestParam(value = "registeremail") String registeremail,
+			@RequestParam(value = "registerusername") String registerusername,	
+			@RequestParam(value = "registerpassword") String registerpassword,	
+			@RequestParam(value = "registerpasswordconfirm") String registerpasswordconfirm,	
+			Model model) {
+		System.out.println("registeremail-" + registeremail);
+		System.out.println("registerusername-" + registerusername);
+		System.out.println("registerpassword-" + registerpassword);
+		System.out.println("registerpasswordconfirm-" + registerpasswordconfirm);
+
 		return "library";
 	}
 

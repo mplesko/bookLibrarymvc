@@ -49,32 +49,27 @@
 				<tr>
 					<td><fmt:message key="email" />
 					</td>
-					<td><input id="registeremailfield" type="text"
-						name="registeremail" />
+					<td><input id="registeremailfield" type="text" name="registeremail" />
 					</td>
 				</tr>
 				<tr>
 					<td><fmt:message key="username" />
 					</td>
-					<td><input id="registerusernamefield" type="text"
-						name="registerusername" />
+					<td><input id="registerusernamefield" type="text" name="registerusername" />
 					</td>
 				</tr>
 				<tr>
 					<td><fmt:message key="password" />
 					</td>
-					<td><input id="registerpasswordfield" type="password"
-						name="registerpassword" />
+					<td><input id="registerpasswordfield" type="password" name="registerpassword" />
 					</td>
 				</tr>
 				<tr>
 					<td><fmt:message key="passwordConfirm" />
 					</td>
-					<td><input id="registerpasswordconfirmfield" type="password"
-						name="registerpasswordconfirm" />
+					<td><input id="registerpasswordconfirmfield" type="password" name="registerpasswordconfirm" />
 					</td>
-					<td align="right"><input type="submit"
-						value="<fmt:message key="register" />" />
+					<td align="right"><input type="submit" value="<fmt:message key="register" />" />
 					</td>
 				</tr>
 			</table>
