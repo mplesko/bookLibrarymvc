@@ -41,7 +41,6 @@ public class LogInController {
 	@Resource
 	private AuthenticationManager authenticationManager;
 
-	
 	/**
 	 * Handle registration request
 	 * @param request
@@ -61,7 +60,7 @@ public class LogInController {
 		System.out.println("registerpassword-" + registerpassword);
 		System.out.println("registerpasswordconfirm-" + registerpasswordconfirm);
 
-		return "library";
+		return "home";
 	}
 
 	/**
@@ -71,6 +70,8 @@ public class LogInController {
 	@Secured("ROLE_USER")
 	@RequestMapping("/loggedin")
 	public String loggedIn(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
 		final String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
 		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);

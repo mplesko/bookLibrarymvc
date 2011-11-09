@@ -23,7 +23,7 @@ CREATE TABLE USERBOOKS (
     BOOK_ID integer not null, 
     unique(USER_ID, BOOK_ID));
 
-CREATE TABLE users (
+CREATE TABLE userdetails (
 	id integer identity primary key,
     username varchar(50) not null,
     password varchar(50) not null,
@@ -33,6 +33,6 @@ CREATE TABLE users (
 create table authorities (
     username varchar(50) not null,
     authority varchar(50) not null,
-    constraint fk_authorities_users foreign key(username) references users(username));
+    constraint fk_authorities_userdetails foreign key(username) references userdetails(username));
     create unique index ix_auth_username on authorities (username, authority);
     
