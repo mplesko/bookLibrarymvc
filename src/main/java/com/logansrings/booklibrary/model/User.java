@@ -9,7 +9,7 @@ import javax.persistence.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table( name = "users" )
+@Table( name = "userdetails" )
 public class User {
 	@Id
 	@Column(name = "id")

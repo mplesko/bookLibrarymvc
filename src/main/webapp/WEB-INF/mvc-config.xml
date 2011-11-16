@@ -47,7 +47,7 @@
 	<mvc:view-controller path="/" view-name="home" />
 	<mvc:view-controller path="/home" view-name="home" />
 	<mvc:view-controller path="/login" view-name="login" />
-	<mvc:view-controller path="/library" view-name="library" />
+<!--	<mvc:view-controller path="/library" view-name="library" /> -->
 	<mvc:view-controller path="/timeout" view-name="timeout" />
 	<mvc:view-controller path="/accessDenied" view-name="accessDenied" />
 	 

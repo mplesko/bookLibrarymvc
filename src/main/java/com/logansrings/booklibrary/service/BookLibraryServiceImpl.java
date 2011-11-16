@@ -1,5 +1,6 @@
 package com.logansrings.booklibrary.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,16 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 			return User.getInvalidUser("duplicate username");
 			
 		}		
+	}
+
+	@Override
+	public Collection<Book> getLibraryBooks(String username) {
+		Collection<Book> libraryBooks = new ArrayList<Book>();
+		libraryBooks.add(Book.getTestBook());
+		
+		User user = userDao.findByUsername(username);
+
+		return user.getBooks();
 	}
 
 }

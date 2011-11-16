@@ -55,10 +55,6 @@ public class LogInController {
 			@RequestParam(value = "registerpassword") String registerpassword,	
 			@RequestParam(value = "registerpasswordconfirm") String registerpasswordconfirm,	
 			Model model) {
-		System.out.println("registeremail-" + registeremail);
-		System.out.println("registerusername-" + registerusername);
-		System.out.println("registerpassword-" + registerpassword);
-		System.out.println("registerpasswordconfirm-" + registerpasswordconfirm);
 
 		return "home";
 	}
@@ -70,11 +66,21 @@ public class LogInController {
 	@Secured("ROLE_USER")
 	@RequestMapping("/loggedin")
 	public String loggedIn(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		final String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-
-		model.addAttribute("libraryBooks", Collections.EMPTY_LIST);
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();		
+		model.addAttribute("libraryBooks", 
+				bookLibraryService.getLibraryBooks(authentication.getName()));
 		return "library";
 	}
+	
+	/**
+	 * <p>Provide a model with a list of all books for principal.</p>
+	 * @param model the "implicit" model created by Spring MVC
+	 */
+	@Secured("ROLE_USER")
+	@RequestMapping("/library")
+	public String library(Model model) {
+		return loggedIn(model);
+	}
+
 }
