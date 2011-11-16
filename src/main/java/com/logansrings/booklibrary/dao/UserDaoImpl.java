@@ -26,12 +26,8 @@ public class UserDaoImpl implements UserDao {
 		if (encryptedPassword == null) {
 			return User.getInvalidUser("unable to encrypt password");
 		}
-
 		User user = new User(username, encryptedPassword, email);
 		sessionFactory.getCurrentSession().save(user);
-		
-		
-
 		return user;
 	}
 	
@@ -48,8 +44,7 @@ public class UserDaoImpl implements UserDao {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from User where email = ?");
 		query.setParameter(0, email);
-		return (User) query.uniqueResult();
-		
+		return (User) query.uniqueResult();		
 	}
 }
 

@@ -56,6 +56,14 @@ public class LogInController {
 			@RequestParam(value = "registerpasswordconfirm") String registerpasswordconfirm,	
 			Model model) {
 
+		User user = bookLibraryService.register(registerusername, registerpassword, registeremail);
+		if (user.isNotValid()) {
+			// need to inform user
+			System.out.println(user.getContext());
+		} else {
+			//need to auto login
+		}
+		
 		return "home";
 	}
 

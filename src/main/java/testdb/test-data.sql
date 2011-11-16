@@ -17,6 +17,7 @@ insert into booklibrarynew.authorities (username, authority) values ('logan', 'R
 insert into booklibrarynew.authorities (username, authority) values ('mark', 'ROLE_USER');
 
 insert into booklibrarynew.USERBOOKS (USER_ID, BOOK_ID) values (1, 1);
+insert into booklibrarynew.USERBOOKS (USER_ID, BOOK_ID) values (1, 3);
 
 --
 
