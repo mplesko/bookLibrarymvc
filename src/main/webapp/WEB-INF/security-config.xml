@@ -37,6 +37,7 @@
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
+			<password-encoder hash="md5"/>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select username,password, enabled from userdetails where username=?"
 				authorities-by-username-query="select ud.username, a.authority from userdetails ud, authorities a 
