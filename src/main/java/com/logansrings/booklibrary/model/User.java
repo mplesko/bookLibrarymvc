@@ -38,6 +38,16 @@ public class User {
 	public void setBooks(Set<Book> books) {this.books = books;}
 	public Set<Book> getBooks() {return books;}
 	
+//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+//	@JoinTable(name = "authorities")
+//	@JoinColumn(name = "username")
+	@OneToMany
+	private Set<UserAuthority> userAuthorities = new HashSet<UserAuthority>();
+//	public void setUserAuthorities(Set<UserAuthority> userAuthorities) {
+//		this.userAuthorities = userAuthorities;
+//	}
+//	public Set<UserAuthority> getUserAuthorities() {return userAuthorities;}
+	
 	@Transient
 	private boolean valid;
 	@Transient
@@ -60,8 +70,13 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.valid = true;
+//		setDefaultAuthority();
 	}
 	
+	public User(String username, String encryptedPassword, String email, UserAuthority userAuthority) {
+		this(username, encryptedPassword, email);
+		setDefaultAuthority(userAuthority);
+	}
 
 //	private User(String inUserName) {
 //		this.userName = inUserName;
@@ -250,4 +265,10 @@ public class User {
 		return user;
 	}
 
+//	private void setDefaultAuthority() {
+//		userAuthorities.add(UserAuthority.getDefaultAuthority(username));
+//	}
+	private void setDefaultAuthority(UserAuthority userAuthority) {
+		userAuthorities.add(userAuthority);
+	}
 }

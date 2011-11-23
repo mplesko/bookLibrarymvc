@@ -43,8 +43,12 @@ public class LogInController {
 
 	/**
 	 * Handle registration request
-	 * @param request
+	 * @param registeremail
+	 * @param registerusername
+	 * @param registerpassword
+	 * @param registerpasswordconfirm
 	 * @param model
+	 * @param request
 	 * @return
 	 */
 //	@RequestMapping(value="/register", method=RequestMethod.POST)                         
@@ -54,17 +58,28 @@ public class LogInController {
 			@RequestParam(value = "registerusername") String registerusername,	
 			@RequestParam(value = "registerpassword") String registerpassword,	
 			@RequestParam(value = "registerpasswordconfirm") String registerpasswordconfirm,	
-			Model model) {
+			Model model,
+			HttpServletRequest request) {
 
 		User user = bookLibraryService.register(registerusername, registerpassword, registeremail);
 		if (user.isNotValid()) {
 			// need to inform user
 			System.out.println(user.getContext());
 		} else {
-			//need to auto login
+			logInRegisteredUser(registerusername, registerpassword, request);
+			return loggedIn(model);
 		}
 		
 		return "home";
+	}
+
+	private void logInRegisteredUser(String username, String password, HttpServletRequest request) {
+		UsernamePasswordAuthenticationToken token = 
+				new UsernamePasswordAuthenticationToken(username, password);
+	    token.setDetails(new WebAuthenticationDetails(request));
+	    Authentication authenticatedUser = 
+	    		authenticationManager.authenticate(token);
+	    SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
 	}
 
 	/**

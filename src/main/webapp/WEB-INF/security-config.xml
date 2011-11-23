@@ -34,12 +34,16 @@
 		</session-management>
 
 	</http>
-
+<!--
+	<beans:bean id="passwordEncoder"  class="com.logansrings.booklibrary.dao.Encrypting">	    
+	</beans:bean>
+-->	
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
+<!--  		<password-encoder ref="passwordEncoder"/> -->	
 			<password-encoder hash="md5"/>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select username,password, enabled from userdetails where username=?"
+				users-by-username-query="select username, password, enabled from userdetails where username=?"
 				authorities-by-username-query="select ud.username, a.authority from userdetails ud, authorities a 
 				where ud.username = a.username and ud.username = ? " />
 		</authentication-provider>

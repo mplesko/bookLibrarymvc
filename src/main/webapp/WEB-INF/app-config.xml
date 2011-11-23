@@ -62,6 +62,7 @@
 				<value>com.logansrings.booklibrary.model.Author</value>
 				<value>com.logansrings.booklibrary.model.Book</value>
 				<value>com.logansrings.booklibrary.model.User</value>
+				<value>com.logansrings.booklibrary.model.UserAuthority</value>				
 			</list>
 		</property>
 	</bean>
