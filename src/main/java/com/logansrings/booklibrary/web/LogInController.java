@@ -63,7 +63,7 @@ public class LogInController {
 
 		User user = bookLibraryService.register(registerusername, registerpassword, registeremail);
 		if (user.isNotValid()) {
-			// need to inform user
+			// TODO inform user of error			
 			System.out.println(user.getContext());
 		} else {
 			logInRegisteredUser(registerusername, registerpassword, request);
