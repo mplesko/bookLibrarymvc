@@ -27,9 +27,11 @@ CREATE TABLE booklibrarynew.userdetails (
     unique (username));
 
 create table booklibrarynew.authorities (
+    id integer AUTO_INCREMENT primary key,
     username varchar(50) not null,
     authority varchar(50) not null,
+    unique(username, authority),
     constraint fk_authorities_userdetails foreign key(username) references userdetails(username));
     
-create unique index ix_auth_username on booklibrarynew.authorities (username, authority);
+--create unique index ix_auth_username on booklibrarynew.authorities (username, authority);
     

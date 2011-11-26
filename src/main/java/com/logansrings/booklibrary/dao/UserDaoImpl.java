@@ -23,11 +23,13 @@ public class UserDaoImpl implements UserDao {
 		String encryptedPassword = Encrypting.encode(password);
 		if (encryptedPassword == null) {
 			return User.getInvalidUser("unable to encrypt password");
-		}
-		UserAuthority userAuthority = UserAuthority.getDefaultAuthority(username);
-		User user = new User(username, encryptedPassword, email, userAuthority);
-		sessionFactory.getCurrentSession().save(userAuthority);
+		}		
+		User user = new User(username, encryptedPassword, email);
+//		User user = new User(username, encryptedPassword, email, userAuthority);
 		sessionFactory.getCurrentSession().save(user);
+		
+		UserAuthority userAuthority = UserAuthority.getDefaultAuthority(username);
+		sessionFactory.getCurrentSession().save(userAuthority);
 		return user;
 	}	
 

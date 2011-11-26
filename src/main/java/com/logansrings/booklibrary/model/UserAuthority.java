@@ -6,15 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table( name = "authorities" )
 public class UserAuthority {
 	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue
-//	@GenericGenerator(name="increment", strategy = "increment")
 	private Long id;
 	@Column(name = "username")
 	private String username = "";
