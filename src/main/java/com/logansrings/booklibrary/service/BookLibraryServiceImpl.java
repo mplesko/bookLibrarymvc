@@ -55,5 +55,11 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 			return Author.getInvalidAuthor("duplicate author");			
 		}		
 	}
+
+	@Override
+	public Book addBook(String title, Author author) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -3,11 +3,13 @@ package com.logansrings.booklibrary.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logansrings.booklibrary.model.Author;
+import com.logansrings.booklibrary.model.Book;
 import com.logansrings.booklibrary.service.BookLibraryService;
 
 /**
@@ -60,6 +62,28 @@ public class HomeController {
 		} else {
 			return addAuthors();
 		}
+	}
+
+	@RequestMapping(value="/addbooks", method=RequestMethod.GET)
+	public String addBooks(Model model) {
+		model.addAttribute("addBookBean", new AddBookBean());
+		model.addAttribute("authors", bookLibraryService.getAuthors());
+		return "addbook";
+	}
+	
+	@RequestMapping("/addbook")
+	public String addBook(@ModelAttribute("addBookBean") AddBookBean addBookBean, Model model) {
+		
+		addBookBean.toString();
+		
+//		Book book = bookLibraryService.addBook(bookFirstName, bookLastName);
+//		if (book.isNotValid()) {
+//			// TODO inform user of error			
+//			System.out.println(book.getContext());
+//			return addBooks();
+//		} else {
+			return "addbook";
+//		}
 	}
 }
 

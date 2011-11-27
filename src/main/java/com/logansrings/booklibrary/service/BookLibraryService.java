@@ -10,5 +10,6 @@ public interface BookLibraryService {
 	Author addAuthor(String authorFirstName, String authorLastName);
 	User register(String username, String password, String email);
 	Collection<Book> getLibraryBooks(String username);
+	Book addBook(String title, Author author);
 	
 }

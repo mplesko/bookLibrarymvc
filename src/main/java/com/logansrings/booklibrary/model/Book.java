@@ -116,7 +116,7 @@ public class Book {
 		return hash;
 	}
 
-//	public void setAssociatedPersistable(Persistable associatedPersistable) {
-//		author = (Author)associatedPersistable;		
-//	}
+	public String getContext() {
+		return context;
+	}
 }
