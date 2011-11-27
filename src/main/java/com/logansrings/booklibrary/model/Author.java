@@ -31,7 +31,7 @@ public class Author {
 //		valid = true;
 //	}
 
-	private Author(String firstName, String lastName) {
+	public Author(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 //		if (ApplicationUtilities.isEmpty(firstName, lastName)) {
@@ -102,4 +102,12 @@ public class Author {
 		hash = 31 * hash + (null == lastName ? 0 : lastName.hashCode());
 		return hash;
 	}
+	
+	public static Author getInvalidAuthor(String context) {
+		Author author = new Author();
+		author.valid = false;
+		author.context = context;
+		return author;
+	}
+
 }

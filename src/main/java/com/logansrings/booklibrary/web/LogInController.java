@@ -1,11 +1,6 @@
 package com.logansrings.booklibrary.web;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-import java.util.Collections;
-
 import javax.annotation.Resource;
-import javax.inject.Qualifier;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logansrings.booklibrary.model.User;
@@ -36,8 +26,6 @@ public class LogInController {
 
 	@Autowired
 	private BookLibraryService bookLibraryService;
-
-	//	@Autowired 
 	@Resource
 	private AuthenticationManager authenticationManager;
 
@@ -51,7 +39,6 @@ public class LogInController {
 	 * @param request
 	 * @return
 	 */
-//	@RequestMapping(value="/register", method=RequestMethod.POST)                         
 	@RequestMapping(value="/register")                         
 	public String register(
 			@RequestParam(value = "registeremail") String registeremail,
@@ -65,12 +52,11 @@ public class LogInController {
 		if (user.isNotValid()) {
 			// TODO inform user of error			
 			System.out.println(user.getContext());
+			return "login";
 		} else {
 			logInRegisteredUser(registerusername, registerpassword, request);
 			return loggedIn(model);
 		}
-		
-		return "home";
 	}
 
 	private void logInRegisteredUser(String username, String password, HttpServletRequest request) {

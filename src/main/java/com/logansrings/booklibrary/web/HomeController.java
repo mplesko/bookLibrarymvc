@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.logansrings.booklibrary.service.BookLibraryService;
@@ -35,14 +36,16 @@ public class HomeController {
 	 */
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {
-//		List<Book> list = new ArrayList<Book>();
-//		list.add(Book.getTestBook());
-//		model.addAttribute("books", list);
 		model.addAttribute("books", bookLibraryService.getBooks());
 		return "booklist";
 	}
+
+	@RequestMapping(value="/addauthors", method=RequestMethod.GET)
+	public String addAuthors() {
+		return "addauthor";
+	}
 	
-	@RequestMapping("/addauthors")
+	@RequestMapping("/addauthor")
 	public String addAuthor(
 			@RequestParam(value = "authorfirstname") String registeremail,
 			@RequestParam(value = "authorlastname") String registerusername,

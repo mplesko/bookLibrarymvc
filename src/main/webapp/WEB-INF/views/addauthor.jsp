@@ -13,7 +13,7 @@
 	<%@ include file="/includes/toolbar.html"%>
 	<%@ include file="/includes/leftbar.html"%>
 	<div id="content">
-		<h1>Add Authors</h1>
+		<h1>Add Author</h1>
 
 		<form id="addAuthorForm" name="addAuthorForm" action="addauthor" method="post">
 			<table>
