@@ -13,7 +13,7 @@ public class UserAuthority {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue
-	private Long id;
+	private Integer id;
 	@Column(name = "username")
 	private String username = "";
 	@Column(name = "authority")

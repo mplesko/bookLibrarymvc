@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.logansrings.booklibrary.ApplicationUtilities;
 import com.logansrings.booklibrary.dao.AuthorDao;
 import com.logansrings.booklibrary.dao.BookDao;
 import com.logansrings.booklibrary.dao.UserDao;
@@ -58,8 +57,21 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 
 	@Override
 	public Book addBook(String title, Author author) {
-		// TODO Auto-generated method stub
-		return null;
+		Book book = bookDao.find(title, author);
+		if (book == null) {
+			return bookDao.save(title, author);
+		} else {
+			return Book.getInvalidBook("duplicate book");
+		}
+	}
+
+	@Override
+	public Author getAuthor(Integer authorId) {
+		Author author = authorDao.find(authorId);
+		if (author == null) {
+			author = Author.getInvalidAuthor("not found");
+		}
+		return author;
 	}
 	
 }

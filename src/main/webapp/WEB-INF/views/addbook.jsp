@@ -26,7 +26,7 @@
 				<tr>
 					<td>Author</td>
 					<td>
-						<form:select path="author">
+						<form:select path="authorId">
 							<form:options items="${authors}" 
 								itemValue="id" 
 								itemLabel="authorLastNameFirstName" />

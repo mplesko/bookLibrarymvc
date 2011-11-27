@@ -73,17 +73,21 @@ public class HomeController {
 	
 	@RequestMapping("/addbook")
 	public String addBook(@ModelAttribute("addBookBean") AddBookBean addBookBean, Model model) {
+		Author author = bookLibraryService.getAuthor(addBookBean.getAuthorId());
+		if (author.isNotValid()) {
+			// TODO inform user of error			
+			System.out.println(author.getContext());
+			return addBooks(model);
+		}
 		
-		addBookBean.toString();
-		
-//		Book book = bookLibraryService.addBook(bookFirstName, bookLastName);
-//		if (book.isNotValid()) {
-//			// TODO inform user of error			
-//			System.out.println(book.getContext());
-//			return addBooks();
-//		} else {
-			return "addbook";
-//		}
+		Book book = bookLibraryService.addBook(addBookBean.getBookTitle(), author);
+		if (book.isNotValid()) {
+			// TODO inform user of error			
+			System.out.println(book.getContext());
+			return addBooks(model);
+		} else {
+			return addBooks(model);
+		}
 	}
 }
 

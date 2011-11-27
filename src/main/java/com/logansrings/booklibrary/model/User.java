@@ -15,7 +15,7 @@ public class User {
 	@Column(name = "id")
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
-	private Long id;
+	private Integer id;
 //	@Version
 //    @Column(name="version")
 //    private Integer version;
@@ -170,7 +170,7 @@ public class User {
 
 	public static User getTestUser() {
 		User user = new User();
-		user.id = 1L;
+		user.id = 1;
 		user.username = "userName";
 		user.password = "password";
 		user.valid = true;

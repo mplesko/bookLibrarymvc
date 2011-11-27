@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.logansrings.booklibrary.ApplicationUtilities;
+
 @Entity
 @Table( name = "BOOKS" )
 public class Book {
@@ -23,8 +25,6 @@ public class Book {
 	@JoinColumn(name="AUTHOR_ID")
 	private Author author;
 
-//	@Transient
-//	private Long authorId;
 	@Transient
 	private boolean valid;
 	@Transient
@@ -32,25 +32,20 @@ public class Book {
 
 	protected Book() {}
 
-//	Book(Long bookId) {
-//		this.id = bookId;
-//		valid = true;
-//	}
-
-	private Book(String title, Author author) {
+	public Book(String title, Author author) {
 		this.title = title;
 		this.author = author;		
-//		if (ApplicationUtilities.isEmpty(title)) {
-//			valid = false;
-//			context = "must have title";
-//		} else {
-//			if (author == null) {
-//				valid = false;
-//				context = "must have author";
-//			} else {
-//				valid = true;
-//			}
-//		}
+		if (ApplicationUtilities.isEmpty(title)) {
+			valid = false;
+			context = "must have title";
+		} else {
+			if (author == null) {
+				valid = false;
+				context = "must have author";
+			} else {
+				valid = true;
+			}
+		}
 	}
 
 
@@ -97,9 +92,6 @@ public class Book {
 	public boolean isValid() {return valid;}
 	public boolean isNotValid() {return ! isValid();}
 
-//	public Integer getVersion() {return version;}
-//	public void setVersion(Integer version) {this.version = version;}
-
 	public boolean equals(Object other) {
 		if (other == null || !(other instanceof Book)) {
 			return false;
@@ -118,5 +110,12 @@ public class Book {
 
 	public String getContext() {
 		return context;
+	}
+
+	public static Book getInvalidBook(String context) {
+		Book book = new Book();
+		book.valid = false;
+		book.context = context;
+		return book;
 	}
 }

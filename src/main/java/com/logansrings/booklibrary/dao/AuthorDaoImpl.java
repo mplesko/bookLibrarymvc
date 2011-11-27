@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.logansrings.booklibrary.model.Author;
-import com.logansrings.booklibrary.model.User;
-import com.logansrings.booklibrary.model.UserAuthority;
 
 @Repository("authorDao")
 public class AuthorDaoImpl implements AuthorDao {
@@ -43,6 +41,13 @@ public class AuthorDaoImpl implements AuthorDao {
 			return author;
 		}
 		sessionFactory.getCurrentSession().save(author);
+		return author;
+	}
+
+	@Transactional(readOnly=false)
+	public Author find(Integer authorId) {
+		Author author =	(Author) sessionFactory.getCurrentSession().get(
+				Author.class, authorId);
 		return author;
 	}	
 

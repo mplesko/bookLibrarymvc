@@ -24,7 +24,7 @@ public class Author {
 	private String lastName;
 
 	@Transient
-	private boolean valid;
+	private boolean valid = true;
 	@Transient
 	private String context = "";
 	@Transient
