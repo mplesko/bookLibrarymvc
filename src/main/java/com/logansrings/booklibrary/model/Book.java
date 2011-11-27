@@ -2,11 +2,15 @@ package com.logansrings.booklibrary.model;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table( name = "BOOKS" )
 public class Book {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
 	private Integer id;
 	@Version
 	@Column(name="VERSION")

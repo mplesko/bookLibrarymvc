@@ -25,7 +25,9 @@ public class UserDaoImpl implements UserDao {
 			return User.getInvalidUser("unable to encrypt password");
 		}		
 		User user = new User(username, encryptedPassword, email);
-//		User user = new User(username, encryptedPassword, email, userAuthority);
+		if (user.isNotValid()) {
+			return user;
+		}
 		sessionFactory.getCurrentSession().save(user);
 		
 		UserAuthority userAuthority = UserAuthority.getDefaultAuthority(username);

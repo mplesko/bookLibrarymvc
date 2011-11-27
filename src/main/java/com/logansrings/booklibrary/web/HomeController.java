@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.logansrings.booklibrary.model.Author;
 import com.logansrings.booklibrary.service.BookLibraryService;
 
 /**
@@ -47,11 +48,18 @@ public class HomeController {
 	
 	@RequestMapping("/addauthor")
 	public String addAuthor(
-			@RequestParam(value = "authorfirstname") String registeremail,
-			@RequestParam(value = "authorlastname") String registerusername,
+			@RequestParam(value = "authorfirstname") String authorFirstName,
+			@RequestParam(value = "authorlastname") String authorLastName,
 			Model model) {
 		
-		return null;
+		Author author = bookLibraryService.addAuthor(authorFirstName, authorLastName);
+		if (author.isNotValid()) {
+			// TODO inform user of error			
+			System.out.println(author.getContext());
+			return addAuthors();
+		} else {
+			return addAuthors();
+		}
 	}
 }
 

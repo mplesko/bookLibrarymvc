@@ -2,11 +2,17 @@ package com.logansrings.booklibrary.model;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import com.logansrings.booklibrary.ApplicationUtilities;
+
 @Entity
 @Table( name = "AUTHORS" )
 public class Author {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
 	private Integer id;
 	@Version
     @Column(name="VERSION")
@@ -26,20 +32,15 @@ public class Author {
 	
 	Author() {}
 	
-//	Author(Long authorId) {
-//		this.id = authorId;
-//		valid = true;
-//	}
-
 	public Author(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-//		if (ApplicationUtilities.isEmpty(firstName, lastName)) {
-//			valid = false;
-//			context = UNINITIALIZED;
-//		} else {
-//			valid = true;
-//		}
+		if (ApplicationUtilities.isEmpty(firstName, lastName)) {
+			valid = false;
+			context = UNINITIALIZED;
+		} else {
+			valid = true;
+		}
 	}
 	
 	public String toString() {
@@ -81,6 +82,8 @@ public class Author {
 		return lastName + ", " + firstName;
 	}
 
+	public String getContext() {return context;}
+	
 	public void setId(Integer id) {this.id = id;}
 	public Integer getId() {return id;}
 	

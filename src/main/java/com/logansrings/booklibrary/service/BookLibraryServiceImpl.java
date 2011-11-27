@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.logansrings.booklibrary.ApplicationUtilities;
 import com.logansrings.booklibrary.dao.AuthorDao;
 import com.logansrings.booklibrary.dao.BookDao;
 import com.logansrings.booklibrary.dao.UserDao;
@@ -31,9 +32,6 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	}
 
 	public User register(String username, String password, String email) {
-		if (isEmpty(username, password)) {
-			return User.getInvalidUser("incomplete");
-		}
 		User user = userDao.findByUsername(username);
 		if (user == null) {
 			return userDao.save(username, password, email);
@@ -50,9 +48,6 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 
 	@Override
 	public Author addAuthor(String authorFirstName, String authorLastName) {
-		if (isEmpty(authorFirstName, authorLastName)) {
-			return Author.getInvalidAuthor("incomplete");
-		}
 		Author author = authorDao.find(authorFirstName, authorLastName);
 		if (author == null) {
 			return authorDao.save(authorFirstName, authorLastName);
@@ -61,19 +56,4 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 		}		
 	}
 	
-	/**
-	 * @param strings
-	 * @return true if any strings are null or zero length
-	 */
-	public static boolean isEmpty(String ... strings) {
-		for (String value : strings) {
-			if (value == null || value.length() == 0) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-
-
 }

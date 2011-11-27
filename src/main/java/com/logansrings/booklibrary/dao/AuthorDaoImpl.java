@@ -39,6 +39,9 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Transactional(readOnly=false)
 	public Author save(String authorFirstName, String authorLastName) {
 		Author author = new Author(authorFirstName, authorLastName);
+		if (author.isNotValid()) {
+			return author;
+		}
 		sessionFactory.getCurrentSession().save(author);
 		return author;
 	}	
