@@ -7,6 +7,8 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.logansrings.booklibrary.model.Book;
 import com.logansrings.booklibrary.model.User;
 import com.logansrings.booklibrary.model.UserAuthority;
 
@@ -74,6 +76,12 @@ public class UserDaoImpl implements UserDao {
 //		encrypt2 = Encrypting.encrypt("abcdefghijklmnopqrstuvwxyz");
 //
 //		isEqual = encrypt1.equals(encrypt2);
+	}
+
+	@Transactional(readOnly=false)
+	public void addBook(User user, Book book) {
+		user.getBooks().add(book);
+		sessionFactory.getCurrentSession().update(user);
 	}
 }
 

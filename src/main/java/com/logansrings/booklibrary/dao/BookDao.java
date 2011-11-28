@@ -11,5 +11,6 @@ public interface BookDao {
 	Book addBook(String title, Author author);
 	Book find(String title, Author author);
 	Book save(String title, Author author);
+	Book find(Integer bookId);
 
 }

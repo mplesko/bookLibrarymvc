@@ -30,7 +30,7 @@ public class BookDaoImpl implements BookDao {
 		}
 	}
 
-	@Override
+	@Transactional(readOnly=false)
 	public Book addBook(String title, Author author) {
 		Book book = new Book(title, author);
 		if (book.isNotValid()) {
@@ -61,6 +61,13 @@ public class BookDaoImpl implements BookDao {
 			return book;
 		}
 		sessionFactory.getCurrentSession().save(book);
+		return book;
+	}
+
+	@Transactional(readOnly=true)
+	public Book find(Integer bookId) {
+		Book book =	(Book) sessionFactory.getCurrentSession().get(
+				Book.class, bookId);
 		return book;
 	}
 

@@ -30,18 +30,18 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 		return authorDao.getAuthors();
 	}
 
-	public User register(String username, String password, String email) {
-		User user = userDao.findByUsername(username);
+	public User register(String userName, String password, String email) {
+		User user = userDao.findByUsername(userName);
 		if (user == null) {
-			return userDao.save(username, password, email);
+			return userDao.save(userName, password, email);
 		} else {
 			return User.getInvalidUser("duplicate username");			
 		}		
 	}
 
 	@Override
-	public Collection<Book> getLibraryBooks(String username) {
-		User user = userDao.findByUsername(username);
+	public Collection<Book> getLibraryBooks(String userName) {
+		User user = userDao.findByUsername(userName);
 		return user.getBooks();
 	}
 
@@ -72,6 +72,17 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 			author = Author.getInvalidAuthor("not found");
 		}
 		return author;
+	}
+
+	@Override
+	public Book addBookToLibrary(String userName, Integer bookId) {
+		User user = userDao.findByUsername(userName);
+		Book book = bookDao.find(bookId);
+		if (book == null) {
+			return Book.getInvalidBook("not found");
+		}
+		userDao.addBook(user, book);
+		return book;
 	}
 	
 }

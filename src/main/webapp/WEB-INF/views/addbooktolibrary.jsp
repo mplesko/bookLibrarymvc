@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -13,14 +14,29 @@
 	<%@ include file="/includes/toolbar.html"%>
 	<%@ include file="/includes/leftbar.html"%>
 	<div id="content">
-		<h1>library</h1>
+		<h1>Add Book To Library</h1>
 
-		<ul>
-			<c:forEach items="${libraryBooks}" var="book">
-				<li>${book.title} - ${book.authorName}</li>
-			</c:forEach>
-		</ul>
-		<a href="addbookstolibrary"><fmt:message key="addBookToLibrary" /> </a>
+		<form:form id="addBookToLibraryForm" name="addBookToLibraryForm" 
+			action="addbooktolibrary" modelAttribute="addBookToLibraryBean" 
+			method="post">
+			<table>
+				<tr>
+					<td>Book</td>
+					<td>
+						<form:select path="bookId">
+							<form:options items="${books}" 
+								itemValue="id" 
+								itemLabel="title" />
+						</form:select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td align="right"><input type="submit" value="Add" />
+					</td>
+				</tr>
+			</table>
+		</form:form>
 	</div>
 </body>
 </html>
