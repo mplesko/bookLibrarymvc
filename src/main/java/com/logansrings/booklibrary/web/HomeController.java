@@ -92,7 +92,7 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping(value="/addbookstolibrary", method=RequestMethod.GET)
+	@RequestMapping(value="/editlibrary", params="addabooktolibrary", method=RequestMethod.GET)
 	public String addBooksToLibrary(Model model) {
 		model.addAttribute("addBookToLibraryBean", new AddBookToLibraryBean());
 		model.addAttribute("books", bookLibraryService.getBooks());
@@ -100,14 +100,22 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/addbooktolibrary")
-	public String addBookToLibrary(@ModelAttribute("addBookToLibraryBean") 
+	public String addBookToLibrary(@ModelAttribute("addBookToLibraryBean")		
 			AddBookToLibraryBean addBookToLibraryBean, Model model) {
 		
 		Authentication authentication = 
 			SecurityContextHolder.getContext().getAuthentication();
 		bookLibraryService.addBookToLibrary(
 				authentication.getName(), addBookToLibraryBean.getBookId());
-		return addBooksToLibrary(model);
+		return "redirect:library";
 	}
+
+	@RequestMapping(value="/editlibrary", params="removebooksfromlibrary", method=RequestMethod.GET)
+	public String deleteBooksFromLibrary(
+			@RequestParam(value = "selectedBookIds", required = false) int[] selectedBookIds,
+			Model model) {
+		return "redirect:library";
+	}
+	
 }
 

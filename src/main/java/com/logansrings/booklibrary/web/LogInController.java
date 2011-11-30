@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.logansrings.booklibrary.model.User;
 import com.logansrings.booklibrary.service.BookLibraryService;
 
@@ -75,11 +74,7 @@ public class LogInController {
 	@Secured("ROLE_USER")
 	@RequestMapping("/loggedin")
 	public String loggedIn(Model model) {
-		Authentication authentication = 
-				SecurityContextHolder.getContext().getAuthentication();		
-		model.addAttribute("libraryBooks", 
-				bookLibraryService.getLibraryBooks(authentication.getName()));
-		return "library";
+		return library(model);
 	}
 	
 	/**
@@ -89,7 +84,11 @@ public class LogInController {
 	@Secured("ROLE_USER")
 	@RequestMapping("/library")
 	public String library(Model model) {
-		return loggedIn(model);
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();
+		model.addAttribute("libraryBooks",
+				bookLibraryService.getLibraryBooks(authentication.getName()));
+		return "library";
 	}
 
 }
