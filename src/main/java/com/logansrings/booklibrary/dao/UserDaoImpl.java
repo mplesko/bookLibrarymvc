@@ -79,10 +79,10 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Transactional(readOnly=false)
-	public void addBook(User user, Book book) {
-		user.getBooks().add(book);
+	public void update(User user) {
 		sessionFactory.getCurrentSession().update(user);
 	}
+
 }
 
 class Encrypting implements PasswordEncoder {

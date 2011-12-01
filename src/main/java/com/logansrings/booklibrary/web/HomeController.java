@@ -114,6 +114,12 @@ public class HomeController {
 	public String deleteBooksFromLibrary(
 			@RequestParam(value = "selectedBookIds", required = false) int[] selectedBookIds,
 			Model model) {
+		
+		Authentication authentication = 
+			SecurityContextHolder.getContext().getAuthentication();
+		bookLibraryService.deleteBooksFromLibrary(
+				authentication.getName(), selectedBookIds);
+		
 		return "redirect:library";
 	}
 	

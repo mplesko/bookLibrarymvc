@@ -12,6 +12,8 @@ public interface BookLibraryService {
 	Collection<Book> getLibraryBooks(String userName);
 	Book addBook(String title, Author author);
 	Author getAuthor(Integer authorId);
+	Book getBook(Integer bookId);
 	Book addBookToLibrary(String userName, Integer bookId);
+	void deleteBooksFromLibrary(String userName, int[] selectedBookIds);
 	
 }

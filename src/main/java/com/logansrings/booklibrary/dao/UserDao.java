@@ -8,6 +8,6 @@ public interface UserDao {
 	User save(String userName, String password, String email);
 	User findByUsername(String username);
 	User findByEmail(String email);
-	void addBook(User user, Book book);
+	void update(User user);
 
 }

@@ -75,14 +75,36 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	}
 
 	@Override
+	public Book getBook(Integer bookId) {
+		Book book = bookDao.find(bookId);
+		if (book == null) {
+			book = Book.getInvalidBook("not found");
+		}
+		return book;
+	}
+
+	@Override
 	public Book addBookToLibrary(String userName, Integer bookId) {
 		User user = userDao.findByUsername(userName);
 		Book book = bookDao.find(bookId);
 		if (book == null) {
 			return Book.getInvalidBook("not found");
 		}
-		userDao.addBook(user, book);
+		user.getBooks().add(book);
+		userDao.update(user);
 		return book;
+	}
+
+	@Override
+	public void deleteBooksFromLibrary(String userName, int[] selectedBookIds) {
+		User user = userDao.findByUsername(userName);
+		for (int bookId : selectedBookIds) {
+			Book book = getBook(bookId);
+			if (user.getBooks().contains(book)) {
+				user.getBooks().remove(book);
+			}
+		}
+		userDao.update(user);
 	}
 	
 }
