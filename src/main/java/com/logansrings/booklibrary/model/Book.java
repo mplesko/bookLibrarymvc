@@ -118,4 +118,8 @@ public class Book {
 		book.context = context;
 		return book;
 	}
+	
+	public String getDisplayName() {
+		return title + " - " + author.getDisplayName();
+	}
 }

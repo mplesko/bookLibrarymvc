@@ -1,1 +1,6 @@
 sort books on library.jsp
+sort books on booklist.jsp
+sort authors on authorList.jsp
+
+add books to library - filter out books already in library
+  

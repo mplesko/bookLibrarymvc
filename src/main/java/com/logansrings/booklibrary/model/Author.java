@@ -113,4 +113,7 @@ public class Author {
 		return author;
 	}
 
+	public String getDisplayName() {
+		return firstName + " " + lastName;
+	}
 }

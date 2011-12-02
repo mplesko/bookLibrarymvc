@@ -17,7 +17,7 @@
 
 		<ul>
 			<c:forEach items="${authors}" var="author">
-				<li>${author.firstName} ${author.lastName}</li>
+				<li>${author.displayName}</li>
 			</c:forEach>
 		</ul>
 	</div>
