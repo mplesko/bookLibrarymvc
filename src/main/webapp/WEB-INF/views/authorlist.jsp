@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="<c:url value="/resources/styles.css"/>"
 	type="text/css" />
-<title><fmt:message key="title" /></title>
+<title><fmt:message key="authors" /></title>
 </head>
 <body>
 	<%@ include file="/includes/welcomebar.html"%>
@@ -15,11 +15,13 @@
 	<div id="content">
 		<h1>Author List</h1>
 
-		<ul>
+		<table>
 			<c:forEach items="${authors}" var="author">
-				<li>${author.displayName}</li>
+				<tr>
+					<td>${author.displayName}</td>
+				</tr>
 			</c:forEach>
-		</ul>
+		</table>
 	</div>
 </body>
 </html>

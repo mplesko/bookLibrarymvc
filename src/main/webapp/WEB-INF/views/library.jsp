@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
 </script>
 
-<title><fmt:message key="title" /></title>
+<title><fmt:message key="library" /></title>
 </head>
 <body>
 	<%@ include file="/includes/welcomebar.html"%>
@@ -31,7 +31,7 @@ $(document).ready(function(){
 		<h1>library</h1>
 
 		<form id="libraryForm" name="libraryForm" action="editlibrary">
-			<table border="1">
+			<table>
 				<tr>
 					<th>Remove From Library</th>
 					<th>Book</th>

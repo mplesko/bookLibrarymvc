@@ -35,7 +35,9 @@
 					<td><input id="passwordfield" type="password"
 						name="j_password" />
 					</td>
-					<td align="right"><input type="submit" value="Login" />
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><input type="submit" value="Login" />
 					</td>
 				</tr>
 			</table>
@@ -69,7 +71,9 @@
 					</td>
 					<td><input id="registerpasswordconfirmfield" type="password" name="registerpasswordconfirm" />
 					</td>
-					<td align="right"><input type="submit" value="<fmt:message key="register" />" />
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><input type="submit" value="<fmt:message key="register" />" />
 					</td>
 				</tr>
 			</table>

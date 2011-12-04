@@ -14,7 +14,7 @@ $(document).ready(function(){
     $('#booktable').tablesorter(); });
 </script>
 
-<title><fmt:message key="title" /></title>
+<title><fmt:message key="books" /></title>
 </head>
 <body>
 	<%@ include file="/includes/welcomebar.html"%>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="<c:url value="/resources/styles.css"/>"
 	type="text/css" />
-<title><fmt:message key="title" /></title>
+<title><fmt:message key="timeout" /></title>
 </head>
 <body>
 	<%@ include file="/includes/welcomebar.html"%>

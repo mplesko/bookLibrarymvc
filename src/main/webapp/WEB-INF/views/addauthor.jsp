@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="<c:url value="/resources/styles.css"/>"
 	type="text/css" />
-<title><fmt:message key="title" /></title>
+<title><fmt:message key="addAuthors" /></title>
 </head>
 <body>
 	<%@ include file="/includes/welcomebar.html"%>
@@ -28,8 +28,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td align="right"><input type="submit" value="Add" />
+					<td colspan="2" align="right"><input type="submit" value="Add" />
 					</td>
 				</tr>
 			</table>
