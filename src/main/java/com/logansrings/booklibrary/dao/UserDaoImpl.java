@@ -8,7 +8,6 @@ import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.logansrings.booklibrary.model.Book;
 import com.logansrings.booklibrary.model.User;
 import com.logansrings.booklibrary.model.UserAuthority;
 

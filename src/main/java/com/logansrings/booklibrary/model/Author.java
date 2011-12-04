@@ -8,7 +8,7 @@ import com.logansrings.booklibrary.ApplicationUtilities;
 
 @Entity
 @Table( name = "AUTHORS" )
-public class Author {
+public class Author implements Comparable<Author> {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(generator="increment")
@@ -77,6 +77,9 @@ public class Author {
 	public String getAuthorName() {
 		return firstName + " " + lastName;
 	}
+	public String getDisplayName() {
+		return getAuthorName();
+	}
 
 	public String getAuthorLastNameFirstName() {
 		return lastName + ", " + firstName;
@@ -113,7 +116,10 @@ public class Author {
 		return author;
 	}
 
-	public String getDisplayName() {
-		return firstName + " " + lastName;
+	@Override
+	public int compareTo(Author author) {
+		if (author == null) {return 0;}
+		return getAuthorLastNameFirstName().compareTo(
+				author.getAuthorLastNameFirstName());
 	}
 }

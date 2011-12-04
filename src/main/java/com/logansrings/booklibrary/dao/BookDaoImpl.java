@@ -1,6 +1,5 @@
 package com.logansrings.booklibrary.dao;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -20,7 +19,7 @@ public class BookDaoImpl implements BookDao {
 
 	@Transactional(readOnly=true)
 	@SuppressWarnings("unchecked")
-	public Collection<Book> getBooks() {
+	public List<Book> getBooks() {
 		try {
 			List<Book> list = sessionFactory.getCurrentSession().createCriteria(Book.class).list();
 			return list;

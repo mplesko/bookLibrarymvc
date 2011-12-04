@@ -4,8 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="<c:url value="/resources/styles.css"/>"
-	type="text/css" />
+<link rel="stylesheet" href="<c:url value="/resources/styles.css"/>" type="text/css" />
+<link rel="stylesheet" href="<c:url value="/resources/tablesorter/tablesorterstyles.css"/>" type="text/css" />
+
+<script type="text/javascript" src="<c:url value="/resources/jquery.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/tablesorter/jquery.tablesorter.js" />"></script>
+<script language="javascript"> 
+$(document).ready(function(){
+    $('#booktable').tablesorter(); });
+</script>
+
 <title><fmt:message key="title" /></title>
 </head>
 <body>
@@ -15,11 +23,22 @@
 	<div id="content">
 		<h1>Book List</h1>
 
-		<ul>
+		<table id="booktable" class="tablesorter">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
 			<c:forEach items="${books}" var="book">
-				<li>${book.displayName}</li>
+				<tr>
+					<td>${book.sortableTitle}</td>
+					<td>${book.sortableAuthorName}</td>
+				</tr>
 			</c:forEach>
-		</ul>
+		</tbody>
+		</table>
 	</div>
 </body>
 </html>

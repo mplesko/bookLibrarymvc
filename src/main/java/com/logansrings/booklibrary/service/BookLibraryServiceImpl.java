@@ -1,6 +1,9 @@
 package com.logansrings.booklibrary.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +26,15 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	private UserDao userDao;
 	
 	public Collection<Book> getBooks() {
-		return bookDao.getBooks();
+		List<Book> books = bookDao.getBooks();
+		Collections.sort(books);
+		return books;
 	}
 
 	public Collection<Author> getAuthors() {
-		return authorDao.getAuthors();
+		List<Author> authors = authorDao.getAuthors();
+		Collections.sort(authors);
+		return authors;
 	}
 
 	public User register(String userName, String password, String email) {
@@ -42,7 +49,9 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	@Override
 	public Collection<Book> getLibraryBooks(String userName) {
 		User user = userDao.findByUsername(userName);
-		return user.getBooks();
+		List<Book> books = new ArrayList<Book>(user.getBooks());
+		Collections.sort(books);
+		return books;
 	}
 
 	@Override

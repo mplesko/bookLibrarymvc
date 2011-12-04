@@ -1,6 +1,5 @@
 package com.logansrings.booklibrary.dao;
 
-import com.logansrings.booklibrary.model.Book;
 import com.logansrings.booklibrary.model.User;
 
 public interface UserDao {

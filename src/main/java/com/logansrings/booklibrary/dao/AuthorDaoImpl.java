@@ -1,6 +1,5 @@
 package com.logansrings.booklibrary.dao;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -19,7 +18,7 @@ public class AuthorDaoImpl implements AuthorDao {
 
 	@Transactional(readOnly=true)
 	@SuppressWarnings("unchecked")
-	public Collection<Author> getAuthors() {
+	public List<Author> getAuthors() {
 		List<Author> list = sessionFactory.getCurrentSession().createCriteria(Author.class).list();
 		return list;
 	}

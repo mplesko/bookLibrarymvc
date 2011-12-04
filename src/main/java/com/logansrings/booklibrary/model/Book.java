@@ -8,7 +8,7 @@ import com.logansrings.booklibrary.ApplicationUtilities;
 
 @Entity
 @Table( name = "BOOKS" )
-public class Book {
+public class Book implements Comparable<Book> {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(generator="increment")
@@ -88,6 +88,7 @@ public class Book {
 	public String getAuthorFirstName() {return author.getFirstName();}
 	public String getAuthorLastName() {return author.getLastName();}
 	public String getAuthorName() {return author.getAuthorName();}
+	public String getSortableAuthorName() {return author.getAuthorLastNameFirstName();}
 
 	public boolean isValid() {return valid;}
 	public boolean isNotValid() {return ! isValid();}
@@ -121,5 +122,22 @@ public class Book {
 	
 	public String getDisplayName() {
 		return title + " - " + author.getDisplayName();
+	}
+
+	public String getSortName() {
+		return getSortableTitle() + " - " + author.getDisplayName();
+	}
+
+	public String getSortableTitle() {
+		if (title.startsWith("The ")) {
+			return title.substring(4) + ", The";
+		}
+		return title;
+	}
+
+	@Override
+	public int compareTo(Book book) {
+		if (book == null) {return 0;}
+		return getSortName().compareTo(book.getSortName());
 	}
 }
