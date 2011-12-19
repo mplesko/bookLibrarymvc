@@ -1,5 +1,6 @@
 package com.logansrings.booklibrary.dao;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,8 +14,16 @@ public class DaoEvent {
 	private void saveMarkerMethod() {}
 	
 	@After(value="saveMarkerMethod()")
-	public void saved() {
-		System.out.println("something saved");
+	public void saved(JoinPoint joinPoint) {
+		StringBuilder sb = new StringBuilder()
+		    .append("Saved ")
+		    .append(joinPoint.getArgs()[0])
+		    .append(" in ")
+		    .append(joinPoint.getTarget())
+		    .append(".")
+		    .append(joinPoint.getSignature().getName())
+		    .append(" ");
+		System.out.println(sb.toString());
 	}
 
 	public void savedUsingAround(ProceedingJoinPoint joinPoint) {
