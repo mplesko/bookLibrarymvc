@@ -62,14 +62,15 @@
 	<!-- A Hibernate SessionFactory for mapping from object to relation tables -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="annotatedClasses">
+		<!--<property name="annotatedClasses">
 			<list>
 				<value>com.logansrings.booklibrary.model.Author</value>
 				<value>com.logansrings.booklibrary.model.Book</value>
 				<value>com.logansrings.booklibrary.model.User</value>
 				<value>com.logansrings.booklibrary.model.UserAuthority</value>				
 			</list>
-		</property>
+		</property> -->
+		<property name="packagesToScan" value="com.logansrings.booklibrary.model" />
 	</bean>
 
 	<!-- Drives transactions using Hibernate APIs when requested -->
