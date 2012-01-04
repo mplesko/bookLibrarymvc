@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xsi:schemaLocation=
+	    "http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd
@@ -18,16 +20,13 @@
 
 	<!-- The configuration of the bookLibraryService application. 
 	<context:annotation-config/> -->
-	
 	<aop:aspectj-autoproxy />
-
 	<context:component-scan base-package="com.logansrings.booklibrary.config" /> 
 
 	<!-- Weaves in transactional advice around @Transactional methods -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="daoEvent"
-      class="com.logansrings.booklibrary.dao.DaoEvent" />
+	<bean id="daoEvent" class="com.logansrings.booklibrary.dao.DaoEvent" />
       
     <aop:config>
         <aop:aspect ref="daoEvent">
@@ -42,8 +41,7 @@
         </aop:aspect>
     </aop:config>
     
-	<!-- Creates an in-memory database populated with test data for fast testing -->
-<!--
+	<!-- Creates an in-memory database populated with test data for fast testing 
 	<jdbc:embedded-database id="dataSource">
 		<jdbc:script location="classpath:testdb/schema.sql"/>
 		<jdbc:script location="classpath:testdb/test-data.sql"/>
@@ -51,8 +49,7 @@
 -->
 	<context:property-placeholder location="/resources/datasource.properties" />
 	
-	<bean id="dataSource" 
-         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${connection.driverClassName}" />
 		<property name="url" value="${connection.url}" />
 		<property name="username" value="${connection.username}" />
@@ -62,14 +59,6 @@
 	<!-- A Hibernate SessionFactory for mapping from object to relation tables -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<!--<property name="annotatedClasses">
-			<list>
-				<value>com.logansrings.booklibrary.model.Author</value>
-				<value>com.logansrings.booklibrary.model.Book</value>
-				<value>com.logansrings.booklibrary.model.User</value>
-				<value>com.logansrings.booklibrary.model.UserAuthority</value>				
-			</list>
-		</property> -->
 		<property name="packagesToScan" value="com.logansrings.booklibrary.model" />
 	</bean>
 
